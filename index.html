@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quote machine</title>
+    <script>
+        const quotebank = [
+            {
+                quote: "Hasta las puertas más pesadas puede ser abiertas.",
+                author: "-Braum"
+
+            }, {
+                quote: "Vivir es pelear, Vive tu vida, busca lo que deseas que más podría importar.",
+                author: "-Illaoi"
+
+            }, {
+                quote: "Lucharé, fracasare pero rendirme es un privilegio que no tengo.",
+                author: "-Lee sin"
+
+            }, {
+                quote: "Varus, V, A, R, U, S, tu nombre debería tener una letra A y después otra letra A Varus, se envió un comunicado Varus, ¡Un comunicado!",
+                author: "-Aatrox"
+            }, {
+                quote: "Hay un placer en la locura que solo los locos conocen.",
+                author: "-Jinx"
+            }, {
+                quote: " ؤ ئئؤأ	بئئ	بئؤؤؤؤئئؤئ",
+                author: "-Churro (no sabe hablar)"
+            }, {
+                quote: "mmmm hay se ven",
+                author: "-Carlos (es muy predecible)"
+            }, {
+                quote: "Estoy muuuuuuyy hard",
+                author: "-Skido (esta muy dificil)"
+            },{
+                quote: "para mi el pajaro loco es solo el pajaro",
+                author: "-Hweg"
+
+            }
+               
+        
+        ];
+
+        window.onload = init;
+        function init() {
+            
+            generatequote()
+
+        }
+        function generatequote(){
+            let quotesize = quotebank.length;
+            let randomquote = Math.floor(Math.random() * quotesize);
+            let randomquotedata = quotebank[randomquote];
+
+
+            let twitterlink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="
+
+            let quoteapi = randomquotedata.quote.replace(/ /g,"%20");
+            twitterlink += quoteapi
+
+            let authorapi = randomquotedata.author.replace(/ /g,"%20");
+            twitterlink += authorapi
+
+
+            document.getElementById("tweet-quote").href = twitterlink;
+            document.getElementById("text"). innerText = randomquotedata.quote;
+            document.getElementById("author"). innerText = randomquotedata.author;
+
+        }
+    </script>
+    <style>
+        * {
+            font-size: 1.5rem;
+            padding: 20px 20px 20px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <wrapper id="quote-box">
+        <div id="text"></div>
+        <div id="author"></div>
+        <button id="new-quote" onclick="generatequote();">new quote</button>
+        <a href="twitterlink" id="tweet-quote" target="_blank" class="button">tweet quote</a>
+    </wrapper>
+    
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+
+
+
+</body>
+</html>
